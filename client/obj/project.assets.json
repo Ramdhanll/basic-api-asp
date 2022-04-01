@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Ramadhani\\Metrodata\\MCC\\Segment 2\\development2\\BASIC\\client\\client.csproj",
+      "projectUniqueName": "C:\\Ramadhani\\Metrodata\\MCC\\Segment 3\\Development\\BASIC\\client\\client.csproj",
       "projectName": "client",
-      "projectPath": "C:\\Ramadhani\\Metrodata\\MCC\\Segment 2\\development2\\BASIC\\client\\client.csproj",
+      "projectPath": "C:\\Ramadhani\\Metrodata\\MCC\\Segment 3\\Development\\BASIC\\client\\client.csproj",
       "packagesPath": "C:\\Users\\erdev\\.nuget\\packages\\",
-      "outputPath": "C:\\Ramadhani\\Metrodata\\MCC\\Segment 2\\development2\\BASIC\\client\\obj\\",
+      "outputPath": "C:\\Ramadhani\\Metrodata\\MCC\\Segment 3\\Development\\BASIC\\client\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\erdev\\AppData\\Roaming\\NuGet\\NuGet.Config",
