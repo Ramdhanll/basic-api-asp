@@ -24,35 +24,45 @@ namespace api.Context
          modelBuilder.Entity<Employee>()
             .HasOne(a => a.Account)
             .WithOne(b => b.Employee)
-            .HasForeignKey<Account>(b => b.NIK);
+            .HasForeignKey<Account>(b => b.NIK)
+            .OnDelete(DeleteBehavior.ClientCascade);
 
          // Account-Profiling (one to one)
          modelBuilder.Entity<Account>()
             .HasOne(a => a.Profiling)
             .WithOne(b => b.Account)
-            .HasForeignKey<Profiling>(b => b.NIK);
+            .HasForeignKey<Profiling>(b => b.NIK)
+            .OnDelete(DeleteBehavior.ClientCascade);
+
 
          // Education-profiling (one to many)
          modelBuilder.Entity<Education>()
             .HasMany(a => a.Profilings)
             .WithOne(e => e.Education)
-            .HasForeignKey(v => v.EducationId);
+            .HasForeignKey(v => v.EducationId)
+            .OnDelete(DeleteBehavior.ClientCascade);
+
 
          // University-Education (one to many)
          modelBuilder.Entity<University>()
             .HasMany(c => c.Educations)
             .WithOne(e => e.University)
-            .HasForeignKey(b => b.UniversityId);
+            .HasForeignKey(b => b.UniversityId)
+            .OnDelete(DeleteBehavior.ClientCascade);
+
 
          modelBuilder.Entity<AccountRole>()
             .HasOne(ar => ar.Account)
             .WithMany(a => a.AccountRoles)
-            .HasForeignKey(ar => ar.AccountId);
+            .HasForeignKey(ar => ar.AccountId)
+            .OnDelete(DeleteBehavior.ClientCascade);
 
          modelBuilder.Entity<AccountRole>()
             .HasOne(ar => ar.Role)
             .WithMany(r => r.AccountRoles)
-            .HasForeignKey(ar => ar.RoleId);
+            .HasForeignKey(ar => ar.RoleId)
+            .OnDelete(DeleteBehavior.ClientCascade);
+
       }
    }
 }

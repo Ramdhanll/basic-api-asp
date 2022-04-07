@@ -170,7 +170,7 @@ namespace basic_api.Migrations
                     b.HasOne("api.Models.Employee", "Employee")
                         .WithOne("Account")
                         .HasForeignKey("api.Models.Account", "NIK")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
 
                     b.Navigation("Employee");
@@ -180,12 +180,13 @@ namespace basic_api.Migrations
                 {
                     b.HasOne("api.Models.Account", "Account")
                         .WithMany("AccountRoles")
-                        .HasForeignKey("AccountId");
+                        .HasForeignKey("AccountId")
+                        .OnDelete(DeleteBehavior.ClientCascade);
 
                     b.HasOne("api.Models.Role", "Role")
                         .WithMany("AccountRoles")
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
 
                     b.Navigation("Account");
@@ -198,7 +199,7 @@ namespace basic_api.Migrations
                     b.HasOne("api.Models.University", "University")
                         .WithMany("Educations")
                         .HasForeignKey("UniversityId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
 
                     b.Navigation("University");
@@ -209,13 +210,13 @@ namespace basic_api.Migrations
                     b.HasOne("api.Models.Education", "Education")
                         .WithMany("Profilings")
                         .HasForeignKey("EducationId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
 
                     b.HasOne("api.Models.Account", "Account")
                         .WithOne("Profiling")
                         .HasForeignKey("api.Models.Profiling", "NIK")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
 
                     b.Navigation("Account");

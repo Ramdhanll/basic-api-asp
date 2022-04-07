@@ -1,4 +1,20 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿const animals = [
+    { name: "garfield", species: "cat", class: { name: "mamalia" } },
+    { name: "nemo", species: "fish", class: { name: "invertebrata" } },
+    { name: "tom", species: "cat", class: { name: "mamalia" } },
+    { name: "garry", species: "cat", class: { name: "mamalia" } },
+    { name: "dory", species: "fish", class: { name: "invertebrata" } },
+    { name: "junet", species: "fish", class: { name: "invertebrata" } },
+    { name: "kimo", species: "cat", class: { name: "mamalia" } },
+    { name: "dora", species: "cat", class: { name: "mamalia" } },
+    { name: "rahel", species: "fish", class: { name: "invertebrata" } }
+]
 
-// Write your JavaScript code.
+const onlyCat = animals.filter(animal => animal.species === "cat")
+console.log("Only Cat", onlyCat)
+
+animals.forEach(animal => {
+    if (animal.species == "fish") animal.class.name = "Non-Mamalia"
+    return animal
+})
+console.log("Animals", animals)

@@ -86,7 +86,6 @@ namespace api.Repository.Data
             return result;
          }
 
-
          var emp = new Employee
          {
             NIK = NIK,
@@ -186,6 +185,24 @@ namespace api.Repository.Data
          foreach (var item in data)
          {
             result.Add(item.roles);
+         };
+
+         return result;
+      }
+
+      public Result DeleteAccount(string nik)
+      {
+         /**
+         accountRole
+         profilling
+         account
+         employee
+         **/
+         var employee = context.Employees.Find(nik);
+         if (employee == null)
+         {
+            result.Status = 1;
+            return result;
          };
 
          return result;

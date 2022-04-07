@@ -31,7 +31,7 @@ namespace api.Controllers
       }
 
       [HttpGet("master")]
-      [Authorize(Roles = "Director, Manager")]
+      // [Authorize(Roles = "Director, Manager")]
       public ActionResult GetMasterEmployeeData()
       {
          try
@@ -116,6 +116,34 @@ namespace api.Controllers
             return StatusCode(500, ResponseAPI.Response(500, e.Message));
          }
       }
+
+      [HttpGet("remove")]
+      public ActionResult DeleteAccount(string nik)
+      {
+         try
+         {
+            throw new Exception(nik);
+
+            var result = accountRepository.DeleteAccount(nik);
+
+            switch (result.Status)
+            {
+               case 1:
+                  return BadRequest(ResponseAPI.Response(400, "Akun tidak dapat ditemukan!"));
+               case 2:
+                  return BadRequest(ResponseAPI.Response(400, "Password salah!"));
+               case 200:
+                  return Ok(ResponseAPI.Response(200, "Akun berhasil dihapus!"));
+               default:
+                  return BadRequest(ResponseAPI.Response(400, "Akun gagal dihapus!"));
+            }
+         }
+         catch (Exception e)
+         {
+            return StatusCode(500, ResponseAPI.Response(500, e.Message));
+         }
+      }
+
 
       [HttpPost("forgot-password")]
       public ActionResult ForgotPassword(ForgotPassword forgotPassword)

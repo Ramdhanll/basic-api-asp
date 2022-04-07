@@ -1,52 +1,23 @@
-﻿* {
-    padding: 0px;
-    margin: 0px;
-    font-family: 'Roboto', sans-serif;
+﻿.badge-orange {
+   background-color: #e69832;
 }
 
-.bike-delivery {
-    width: max-content; 
-    color: #E1843A;
-    background-color: #F7E2D6;
-    font-size: 18px;
+.badge-normal {
+   background-color: #e86f5f;
+   color: white;
 }
 
-.hero-title {
-    font-size: 70px;
+.badge-ground {
+   background-color: #544e4d;
+   color: white;
 }
 
-.btn-order {
-    background-color: #F79533 !important;
-    color: white;
-    font-weight: 400;
+.badge-dark {
+   background-color: #121010;
+   color: white;
 }
 
-.box {
-    width: max-content;
-    position: relative;
-    background-color: white;
-    text-align: center;
-    width: 150px;
-    height: 150px;
-    padding-top: 25px;
-}
-
-.box img {
-    width: 125px;
-    min-height: 150px;
-    position: absolute;
-    top: -100px;
-    left: 15px;
-}
-
-.box h6 {
-    font-size: 20px;
-}
-
-.box p {
-    font-size: 14px;
-}
-
-.box .icon {
-    color: #FF9696;
+.badge-fairy {
+   background-color: #9837b0;
+   color: white;
 }

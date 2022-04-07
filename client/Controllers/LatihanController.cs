@@ -22,5 +22,10 @@ namespace client.Controllers
         {
             return View();
         }
+
+        public IActionResult Yupee()
+        {
+            return View();
+        }
     }
 }

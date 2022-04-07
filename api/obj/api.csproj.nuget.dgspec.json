@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Ramadhani\\Metrodata\\MCC\\Segment 2\\development2\\BASIC\\api\\api.csproj": {}
+    "C:\\Ramadhani\\Metrodata\\MCC\\Segment 3\\Development\\BASIC\\api\\api.csproj": {}
   },
   "projects": {
-    "C:\\Ramadhani\\Metrodata\\MCC\\Segment 2\\development2\\BASIC\\api\\api.csproj": {
+    "C:\\Ramadhani\\Metrodata\\MCC\\Segment 3\\Development\\BASIC\\api\\api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Ramadhani\\Metrodata\\MCC\\Segment 2\\development2\\BASIC\\api\\api.csproj",
+        "projectUniqueName": "C:\\Ramadhani\\Metrodata\\MCC\\Segment 3\\Development\\BASIC\\api\\api.csproj",
         "projectName": "api",
-        "projectPath": "C:\\Ramadhani\\Metrodata\\MCC\\Segment 2\\development2\\BASIC\\api\\api.csproj",
+        "projectPath": "C:\\Ramadhani\\Metrodata\\MCC\\Segment 3\\Development\\BASIC\\api\\api.csproj",
         "packagesPath": "C:\\Users\\erdev\\.nuget\\packages\\",
-        "outputPath": "C:\\Ramadhani\\Metrodata\\MCC\\Segment 2\\development2\\BASIC\\api\\obj\\",
+        "outputPath": "C:\\Ramadhani\\Metrodata\\MCC\\Segment 3\\Development\\BASIC\\api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\erdev\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -44,9 +44,17 @@
               "target": "Package",
               "version": "[4.0.3, )"
             },
+            "Microsoft.AspNetCore.Authentication.Certificate": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[3.1.20, )"
+            },
+            "Microsoft.AspNetCore.Cors": {
+              "target": "Package",
+              "version": "[2.2.0, )"
             },
             "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
               "target": "Package",

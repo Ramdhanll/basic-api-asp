@@ -78,3 +78,7 @@ C:\Ramadhani\Metrodata\MCC\Segment 3\Development\BASIC\client\obj\Debug\netcorea
 C:\Ramadhani\Metrodata\MCC\Segment 3\Development\BASIC\client\obj\Debug\netcoreapp3.1\client.pdb
 C:\Ramadhani\Metrodata\MCC\Segment 3\Development\BASIC\client\obj\Debug\netcoreapp3.1\client.genruntimeconfig.cache
 C:\Ramadhani\Metrodata\MCC\Segment 3\Development\BASIC\client\obj\Debug\netcoreapp3.1\client.csproj.CopyComplete
+C:\Ramadhani\Metrodata\MCC\Segment 3\Development\BASIC\client\obj\Debug\netcoreapp3.1\Razor\Views\Latihan\Yupee.cshtml.g.cs
+C:\Ramadhani\Metrodata\MCC\Segment 3\Development\BASIC\client\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_YupeeLayout.cshtml.g.cs
+C:\Ramadhani\Metrodata\MCC\Segment 3\Development\BASIC\client\obj\Debug\netcoreapp3.1\Razor\Views\Employee\Index.cshtml.g.cs
+C:\Ramadhani\Metrodata\MCC\Segment 3\Development\BASIC\client\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_EmployeeLayout.cshtml.g.cs

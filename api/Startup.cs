@@ -5,17 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using api.Context;
 using api.Repository.Data;
+// using Microsoft.AspNetCore.Authentication.Certificate;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Cors;
 
 namespace basic_api
 {
@@ -85,11 +84,18 @@ namespace basic_api
 
          app.UseRouting();
 
+         app.UseCors(x => x
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .SetIsOriginAllowed(origin => true)
+                .AllowCredentials());
+
+
          app.UseAuthentication();
 
          app.UseAuthorization();
 
-         app.UseCors(options => options.AllowAnyOrigin());
+
 
          app.UseEndpoints(endpoints =>
          {

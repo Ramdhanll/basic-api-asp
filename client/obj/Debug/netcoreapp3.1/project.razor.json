@@ -14402,6 +14402,11 @@
   "RootNamespace": "client",
   "Documents": [
     {
+      "FilePath": "c:\\Ramadhani\\Metrodata\\MCC\\Segment 3\\Development\\BASIC\\client\\Views\\Latihan\\Yupee.cshtml",
+      "TargetPath": "Views\\Latihan\\Yupee.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Ramadhani\\Metrodata\\MCC\\Segment 3\\Development\\BASIC\\client\\Views\\_ViewStart.cshtml",
       "TargetPath": "Views\\_ViewStart.cshtml",
       "FileKind": "mvc"
@@ -14447,8 +14452,23 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Ramadhani\\Metrodata\\MCC\\Segment 3\\Development\\BASIC\\client\\Views\\Shared\\_YupeeLayout.cshtml",
+      "TargetPath": "Views\\Shared\\_YupeeLayout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Ramadhani\\Metrodata\\MCC\\Segment 3\\Development\\BASIC\\client\\Views\\Employee\\Index.cshtml",
+      "TargetPath": "Views\\Employee\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Ramadhani\\Metrodata\\MCC\\Segment 3\\Development\\BASIC\\client\\Views\\Shared\\_LatihanLayout.cshtml",
       "TargetPath": "Views\\Shared\\_LatihanLayout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Ramadhani\\Metrodata\\MCC\\Segment 3\\Development\\BASIC\\client\\Views\\Shared\\_EmployeeLayout.cshtml",
+      "TargetPath": "Views\\Shared\\_EmployeeLayout.cshtml",
       "FileKind": "mvc"
     },
     {
