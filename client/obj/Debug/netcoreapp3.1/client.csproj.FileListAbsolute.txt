@@ -82,3 +82,4 @@ C:\Ramadhani\Metrodata\MCC\Segment 3\Development\BASIC\client\obj\Debug\netcorea
 C:\Ramadhani\Metrodata\MCC\Segment 3\Development\BASIC\client\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_YupeeLayout.cshtml.g.cs
 C:\Ramadhani\Metrodata\MCC\Segment 3\Development\BASIC\client\obj\Debug\netcoreapp3.1\Razor\Views\Employee\Index.cshtml.g.cs
 C:\Ramadhani\Metrodata\MCC\Segment 3\Development\BASIC\client\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_EmployeeLayout.cshtml.g.cs
+C:\Ramadhani\Metrodata\MCC\Segment 3\Development\BASIC\client\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_AdminLayout.cshtml.g.cs

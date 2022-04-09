@@ -46,6 +46,30 @@ namespace api.Controllers
          }
       }
 
+      [HttpGet("master/{nik}")]
+      // [Authorize(Roles = "Director, Manager")]
+      public ActionResult GetMasterEmployeeDataByNIK(string nik)
+      {
+         try
+         {
+            var result = accountRepository.GetMasterEmployeeDataByNIK(nik);
+
+            switch (result.Status)
+            {
+               case 1:
+                  return BadRequest(ResponseAPI.Response(400, "Akun tidak dapat ditemukan!"));
+               case 200:
+                  return Ok(ResponseAPI.Response(200, "Data berhasil didapatkan!", result.Data));
+               default:
+                  return BadRequest(ResponseAPI.Response(400, "Login gagal!"));
+            }
+         }
+         catch (Exception e)
+         {
+            return StatusCode(500, ResponseAPI.Response(500, e.Message));
+         }
+      }
+
       [HttpPost("login")]
       public ActionResult Login(LoginVM loginVM)
       {
@@ -117,13 +141,32 @@ namespace api.Controllers
          }
       }
 
-      [HttpGet("remove")]
+      [HttpPut("master/update")]
+      public ActionResult UpdateAccount(UpdateVM updataVM)
+      {
+         try
+         {
+            var result = accountRepository.UpdateAccount(updataVM);
+            return result.Status switch
+            {
+               200 => Ok(ResponseAPI.Response(200, "Update berhasil!", result.Data)),
+               1 => BadRequest(ResponseAPI.Response(400, "Nomor telepon sudah digunakan!")),
+               2 => BadRequest(ResponseAPI.Response(400, "Email sudah digunakan!")),
+               3 => NotFound(ResponseAPI.Response(404, "Role employee tidak ada, silahkan tambah role employee terlebih dahulu!")),
+               _ => BadRequest(ResponseAPI.Response(400, "Update gagal!"))
+            };
+         }
+         catch (Exception e)
+         {
+            return StatusCode(500, ResponseAPI.Response(500, e.Message));
+         }
+      }
+
+      [HttpDelete("remove/{nik}")]
       public ActionResult DeleteAccount(string nik)
       {
          try
          {
-            throw new Exception(nik);
-
             var result = accountRepository.DeleteAccount(nik);
 
             switch (result.Status)

@@ -68,6 +68,57 @@ namespace api.Repository.Data
          return result;
       }
 
+      public Result GetMasterEmployeeDataByNIK(string nik)
+      {
+         var isExist = context.Employees.Find(nik);
+         if (isExist == null)
+         {
+            result.Status = 1;
+            return result;
+         };
+
+         var getAccount = (
+            from employee in context.Employees
+            join account in context.Accounts
+               on employee.NIK equals account.NIK
+            join profiling in context.Profilings
+               on account.NIK equals profiling.NIK
+            join education in context.Educations
+               on profiling.EducationId equals education.Id
+            join university in context.Universities
+               on education.UniversityId equals university.Id
+            where employee.NIK == nik
+            select new
+            {
+               NIK = employee.NIK,
+               FullName = employee.FirstName + " " + employee.LastName,
+               employee.Phone,
+               Gender = Converts.CovertGender(employee.Gender.ToString()),
+               employee.Email,
+               employee.BirthDate,
+               employee.Salary,
+               Education_id = profiling.EducationId,
+               education.GPA,
+               education.Degree,
+               UniversityName = university.Name,
+               UniversityId = university.Id,
+               Roles = (from account in context.AccountRoles
+                        join role in context.Roles
+                        on account.RoleId equals role.Id
+                        where account.AccountId == employee.NIK
+                        select new
+                        {
+                           role.Name
+                        }).Select(x => x.Name).ToArray()
+            }
+         ).FirstOrDefault();
+
+         result.Status = 200;
+         result.Data = getAccount;
+
+         return result;
+      }
+
       public Result Register(RegisterVM registerVM)
       {
          string NIK = generatedNIK();
@@ -190,6 +241,67 @@ namespace api.Repository.Data
          return result;
       }
 
+      public Result UpdateAccount(UpdateVM updateVM)
+      {
+         /**
+            {
+               "FirstName": "Ayu",
+               "LastName": "Aulia",
+               "Phone": "098834425",
+               "BirthDate": "2000-03-23",
+               "Gender": 0,
+               "Salary": 1800000,
+               "Email": "aulia@gmail.com",
+               "Password": "password",
+               "Degree": "S1",
+               "GPA": "3.5",
+               "UniversityId": 3
+            }
+         **/
+
+         var employee = context.Employees.SingleOrDefault(e => e.NIK == updateVM.NIK);
+         if (employee != null)
+         {
+            ValidationCheckForUpdate(updateVM.NIK, updateVM.Phone, "Phone");
+            ValidationCheckForUpdate(updateVM.NIK, updateVM.Email, "Email");
+
+            employee.FirstName = updateVM.FirstName;
+            employee.LastName = updateVM.LastName;
+            employee.Phone = updateVM.Phone;
+            employee.BirthDate = updateVM.BirthDate;
+            employee.Salary = updateVM.Salary;
+            employee.Email = updateVM.Email;
+
+            context.SaveChanges();
+         }
+
+         var education = context.Educations.Find(updateVM.Education_id);
+         if (education != null)
+         {
+            education.Degree = updateVM.Degree;
+            education.GPA = updateVM.GPA;
+            education.UniversityId = updateVM.UniversityId;
+            context.SaveChanges();
+         }
+
+         result.Status = 200;
+         return result;
+      }
+
+      private void ValidationCheckForUpdate(string nik, string value, string field)
+      {
+         if (field == "Phone")
+         {
+            var checkPhone = context.Employees.Any(e => e.Phone == value && e.NIK != nik);
+            if (checkPhone) throw new Exception("Nomor telepon sudah digunakan!");
+         }
+         else if (field == "Email")
+         {
+            var checkEmail = context.Employees.Any(e => e.Email == value && e.NIK != nik);
+            if (checkEmail) throw new Exception("Email sudah digunakan!");
+         }
+      }
+
       public Result DeleteAccount(string nik)
       {
          /**
@@ -205,6 +317,22 @@ namespace api.Repository.Data
             return result;
          };
 
+         var accountRole = context.AccountRoles.FirstOrDefault(acc => acc.AccountId == nik);
+         context.AccountRoles.Remove(accountRole);
+         context.SaveChanges();
+
+         var profiling = context.Profilings.Find(nik);
+         context.Profilings.Remove(profiling);
+         context.SaveChanges();
+
+         var account = context.Accounts.Find(nik);
+         context.Accounts.Remove(account);
+         context.SaveChanges();
+
+         context.Employees.Remove(employee);
+         context.SaveChanges();
+
+         result.Status = 200;
          return result;
       }
 

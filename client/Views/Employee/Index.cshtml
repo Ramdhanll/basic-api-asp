@@ -1,6 +1,6 @@
 ﻿@{
    ViewData["Title"] = "Employee Page";
-   Layout = "_EmployeeLayout";
+   Layout = "_AdminLayout";
 }
 
 <div class="container pt-3 overflow-auto">
@@ -24,6 +24,7 @@
       <tbody id="tbody"></tbody>
    </table>
 
+
    <!-- Modal Register-->
    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-xl">
@@ -36,8 +37,7 @@
             </div>
             <div class="modal-body">
                @* <form class="needs-validation" id="employee_form" novalidate onsubmit="console.log('ok')"> *@
-               @* <form id="employee_form" onsubmit="Insert()"> *@
-               <form id="employee_form" onsubmit="event.preventDefault()">
+               <form id="employee_form" onsubmit="Insert()">
                   <div class="form-row">
                      <div class="col-md-4 mb-3">
                         <label for="first_name">First name</label>
@@ -120,6 +120,122 @@
                      <div class="col-md-4 mb-3">
                         <label for="university_id">University</label>
                         <select class="custom-select" id="university_id" required>
+
+                        </select>
+                        <div class="invalid-feedback">
+                           Please select a valid university.
+                        </div>
+                     </div>
+                  </div>
+                  <button class="btn btn-primary d-block ml-auto" type="submit">Submit
+                     form</button>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <!-- Modal Update-->
+   <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title" id="updateModalLabel">Update Data</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+               </button>
+            </div>
+            <div class="modal-body">
+               <form id="employee_form" onsubmit="Update()">
+                  <input type="hidden" name="nik" id="nik">
+                  <input type="hidden" name="education_id_update" id="education_id_update">
+                  <div class="form-row">
+                     <div class="col-md-4 mb-3">
+                        <label for="first_name_update">First name</label>
+                        <input type="text" class="form-control" id="first_name_update" placeholder="Input first name"
+                           required>
+                     </div>
+                     <div class="col-md-4 mb-3">
+                        <label for="last_name_update">Last name</label>
+                        <input type="text" class="form-control" id="last_name_update" placeholder="Input last name"
+                           required>
+                     </div>
+                     <div class="col-md-4 mb-3">
+                        <label for="phone_update">Phone</label>
+                        <input type="number" class="form-control" id="phone_update" placeholder="Input phone" required>
+                     </div>
+                  </div>
+                  <div class="form-row">
+                     <div class="col-md-4 mb-3">
+                        <label for="birth_date_update">Birth Date</label>
+                        <input type="date" class="form-control" id="birth_date_update" placeholder="Input birth date"
+                           required>
+                        <div class="invalid-feedback">
+                           Please provide a valid Birth Date.
+                        </div>
+                     </div>
+                     <div class="col-md-4 mb-3">
+                        <label for="gender_update">Gender</label>
+                        <select class="custom-select" id="gender_update" required>
+                           <option selected disabled value="">Choose...</option>
+                           <option value="0">Male</option>
+                           <option value="1">Female</option>
+                        </select>
+                        <div class="invalid-feedback">
+                           Please select a valid gender.
+                        </div>
+                     </div>
+                     <div class="col-md-4 mb-3">
+                        <label for="salary_update">Salary</label>
+                        <input type="number" class="form-control" id="salary_update" placeholder="Input salary"
+                           required>
+                        <div class="invalid-feedback">
+                           Please provide a valid Salary.
+                        </div>
+                     </div>
+                  </div>
+                  <div class="form-row">
+                     <div class="col-md-4 mb-3">
+                        <label for="email_update">Email</label>
+                        <input type="email" class="form-control" id="email_update" placeholder="Input email" required>
+                        <div class="invalid-feedback">
+                           Please provide a valid Email.
+                        </div>
+                     </div>
+                     <div class="col-md-4 mb-3">
+                        <label>Password</label>
+                        <div class="input-group" id="show_hide_password">
+                           <input type="text" class="form-control" aria-label="Recipient's username" disabled
+                              aria-describedby="basic-addon2" id="password" placeholder="Input password" required>
+                           <div class="input-group-append">
+                              <button class="input-group-text btn shadow-none" id="basic-addon2"><i
+                                    class="fa fa-eye-slash" aria-hidden="true"></i></button>
+                           </div>
+                           <div class="invalid-feedback">
+                              Please provide a valid Password.
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-md-4 mb-3">
+                        <label for="degree_update">Degree</label>
+                        <input type="text" class="form-control" id="degree_update" placeholder="Input degree" required>
+                        <div class="invalid-feedback">
+                           Please provide a valid Degree.
+                        </div>
+                     </div>
+                  </div>
+                  <div class="form-row">
+                     <div class="col-md-4 mb-3">
+                        <label for="gpa_update">GPA</label>
+                        <input type="datetime" class="form-control" id="gpa_update" placeholder="Input GPS e.g 3.4"
+                           required>
+                        <div class="invalid-feedback">
+                           Please provide a valid GPA.
+                        </div>
+                     </div>
+                     <div class="col-md-4 mb-3">
+                        <label for="university_id_update">University</label>
+                        <select class="custom-select" id="university_id_update" required>
 
                         </select>
                         <div class="invalid-feedback">
