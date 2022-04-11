@@ -1,0 +1,79 @@
+﻿@{
+   ViewData["Title"] = "University Page";
+   Layout = "_AdminLayout";
+}
+
+<div class="container pt-3 overflow-auto">
+   <div class="d-flex justify-content-between align-items-center mb-5">
+      <h2>Data University</h2>
+      <button class="btn btn-primary d-block" data-toggle="modal" data-target="#addModal">Add
+         University</button>
+   </div>
+   <table class="table-university table table-striped table-md-responsive">
+      <thead>
+         <tr>
+            <th>No</th>
+            <th>Name</th>
+            <th>Action</th>
+         </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+   </table>
+
+
+   <!-- Modal Add-->
+   <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title" id="addModalLabel">Add</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+               </button>
+            </div>
+            <div class="modal-body">
+               @* <form class="needs-validation" id="university_form" novalidate onsubmit="console.log('ok')"> *@
+               <form id="university_form" onsubmit="Insert()">
+                  <div class="form-row">
+                     <label for="name">University</label>
+                     <input type="text" class="form-control" id="name" placeholder="Input university name ..." required>
+                  </div>
+                  <button class="btn btn-primary d-block ml-auto mt-4" type="submit">Submit
+                     form</button>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <!-- Modal Update-->
+   <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title" id="updateModalLabel">Update Data</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+               </button>
+            </div>
+            <div class="modal-body">
+               <form id="university_form" onsubmit="Update()">
+                  <input type="hidden" name="id" id="id">
+                  <div class="form-row">
+                     <label for="name_update">University</label>
+                     <input type="text" class="form-control" id="name_update" placeholder="Input university name ..."
+                        required>
+                  </div>
+                  <button class="btn btn-primary d-block ml-auto" type="submit">Update</button>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+
+</div>
+
+
+@section scripts {
+<script src="~/js/university.js"></script>
+}

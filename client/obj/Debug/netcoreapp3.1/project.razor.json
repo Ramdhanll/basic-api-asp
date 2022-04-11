@@ -14412,6 +14412,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Ramadhani\\Metrodata\\MCC\\Segment 3\\Development\\BASIC\\client\\Views\\University\\Index.cshtml",
+      "TargetPath": "Views\\University\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Ramadhani\\Metrodata\\MCC\\Segment 3\\Development\\BASIC\\client\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"
@@ -14447,8 +14452,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Ramadhani\\Metrodata\\MCC\\Segment 3\\Development\\BASIC\\client\\Views\\Dashboard\\Index.cshtml",
+      "TargetPath": "Views\\Dashboard\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Ramadhani\\Metrodata\\MCC\\Segment 3\\Development\\BASIC\\client\\Views\\TestCors\\Index.cshtml",
       "TargetPath": "Views\\TestCors\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Ramadhani\\Metrodata\\MCC\\Segment 3\\Development\\BASIC\\client\\Views\\Login\\Index.cshtml",
+      "TargetPath": "Views\\Login\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -14459,6 +14474,16 @@
     {
       "FilePath": "c:\\Ramadhani\\Metrodata\\MCC\\Segment 3\\Development\\BASIC\\client\\Views\\Employee\\Index.cshtml",
       "TargetPath": "Views\\Employee\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Ramadhani\\Metrodata\\MCC\\Segment 3\\Development\\BASIC\\client\\Views\\Shared\\_LoginLayout.cshtml",
+      "TargetPath": "Views\\Shared\\_LoginLayout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Ramadhani\\Metrodata\\MCC\\Segment 3\\Development\\BASIC\\client\\Views\\Shared\\_AdminLayout.cshtml",
+      "TargetPath": "Views\\Shared\\_AdminLayout.cshtml",
       "FileKind": "mvc"
     },
     {

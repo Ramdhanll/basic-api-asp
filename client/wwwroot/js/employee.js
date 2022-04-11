@@ -31,7 +31,7 @@
          },
       ],
       ajax: {
-         url: 'https://localhost:44348/api/accounts/master/',
+         url: 'https://localhost:5001/api/accounts/master/',
          datatype: 'json',
          dataSrc: 'result',
       },
@@ -52,6 +52,7 @@
          },
          {
             data: null,
+            width: 'max-content',
             render: (data) => {
                return convertPhoneNumber(data['phone'])
             },
@@ -60,6 +61,12 @@
             data: null,
             render: (data) => {
                return moment(data['birthDate']).format('LL')
+            },
+         },
+         {
+            data: null,
+            render: (data) => {
+               return data['universityName']
             },
          },
          {
@@ -125,7 +132,7 @@ const Insert = () => {
    data.UniversityId = parseInt($('#university_id').val())
 
    $.ajax({
-      url: 'https://localhost:44348/api/accounts/register',
+      url: 'https://localhost:5001/api/accounts/register',
       type: 'POST',
       headers: {
          Accept: 'application/json',
@@ -167,7 +174,7 @@ $(document).ready(function () {
 // get universities and display to modal insert
 $.ajax({
    type: 'GET',
-   url: 'https://localhost:44348/api/universities',
+   url: 'https://localhost:5001/api/universities',
    data: {},
 })
    .done((result) => {
@@ -195,7 +202,7 @@ const Delete = (nik) => {
    }).then((willDelete) => {
       if (willDelete) {
          $.ajax({
-            url: `https://localhost:44348/api/accounts/remove/${nik}`,
+            url: `https://localhost:5001/api/accounts/remove/${nik}`,
             type: 'DELETE',
             headers: {
                Accept: 'application/json',
@@ -222,7 +229,7 @@ const openUpdateModal = (nik) => {
 
    $.ajax({
       type: 'GET',
-      url: `https://localhost:44348/api/accounts/master/${nik}`,
+      url: `https://localhost:5001/api/accounts/master/${nik}`,
    })
       .done((response) => {
          const data = response.result
@@ -279,7 +286,7 @@ const Update = () => {
    data.UniversityId = parseInt($('#university_id_update').val())
 
    $.ajax({
-      url: 'https://localhost:44348/api/accounts/master/update',
+      url: 'https://localhost:5001/api/accounts/master/update',
       type: 'PUT',
       headers: {
          Accept: 'application/json',

@@ -1,0 +1,42 @@
+@{
+    ViewData["Title"] = "Login Page";
+    Layout = "_LoginLayout";
+}
+
+<div class="row" style="height: 100vh;" style="color: #2E1460;">
+    <div class="col">
+        <div class="p-4">
+            <div class="logo d-flex align-items-center">
+                <img src="~/images/cat.png" alt="logo" width="60" height="60">
+                <h4>KitCat</h4>
+            </div>
+
+            <section class="title mt-3">
+                <h3>Welcome Back!</h3>
+                <p>Please Log in to your account.</p>
+            </section>
+
+            <section class="form mt-5">
+                <form>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            placeholder="Enter email" style="width: 30vw;" required>
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                            else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
+                            style="width: 30vw;" required>
+                    </div>
+                    <div>
+                        <a href="#" class="text-danger">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Login</button>
+                </form>
+            </section>
+        </div>
+    </div>
+    <div class="col bg-warning" style="height: 100vh;"></div>
+</div>

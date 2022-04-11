@@ -83,3 +83,10 @@ C:\Ramadhani\Metrodata\MCC\Segment 3\Development\BASIC\client\obj\Debug\netcorea
 C:\Ramadhani\Metrodata\MCC\Segment 3\Development\BASIC\client\obj\Debug\netcoreapp3.1\Razor\Views\Employee\Index.cshtml.g.cs
 C:\Ramadhani\Metrodata\MCC\Segment 3\Development\BASIC\client\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_EmployeeLayout.cshtml.g.cs
 C:\Ramadhani\Metrodata\MCC\Segment 3\Development\BASIC\client\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_AdminLayout.cshtml.g.cs
+<<<<<<< HEAD
+=======
+C:\Ramadhani\Metrodata\MCC\Segment 3\Development\BASIC\client\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginLayout.cshtml.g.cs
+C:\Ramadhani\Metrodata\MCC\Segment 3\Development\BASIC\client\obj\Debug\netcoreapp3.1\Razor\Views\Login\Index.cshtml.g.cs
+C:\Ramadhani\Metrodata\MCC\Segment 3\Development\BASIC\client\obj\Debug\netcoreapp3.1\Razor\Views\Dashboard\Index.cshtml.g.cs
+C:\Ramadhani\Metrodata\MCC\Segment 3\Development\BASIC\client\obj\Debug\netcoreapp3.1\Razor\Views\University\Index.cshtml.g.cs
+>>>>>>> 1f22987 (add charts)

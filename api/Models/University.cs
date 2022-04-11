@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace api.Models
 {
@@ -14,6 +15,7 @@ namespace api.Models
       public int Id { get; set; }
       [Required]
       public string Name { get; set; }
+      [JsonIgnore]
       public virtual ICollection<Education> Educations { get; set; }
    }
 }
