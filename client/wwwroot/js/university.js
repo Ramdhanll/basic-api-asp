@@ -27,7 +27,7 @@ $(document).ready(function () {
          },
       ],
       ajax: {
-         url: 'https://localhost:5001/api/universities/',
+         url: '../university/getall',
          datatype: 'json',
          dataSrc: 'result',
       },

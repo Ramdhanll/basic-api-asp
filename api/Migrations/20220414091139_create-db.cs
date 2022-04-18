@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace basic_api.Migrations
 {
-    public partial class createdatabase : Migration
+    public partial class createdb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,10 +14,10 @@ namespace basic_api.Migrations
                     NIK = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     BirthDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Salary = table.Column<int>(type: "int", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Gender = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -29,26 +29,26 @@ namespace basic_api.Migrations
                 name: "Role",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Role", x => x.Id);
+                    table.PrimaryKey("PK_Role", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
                 name: "University",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_University", x => x.Id);
+                    table.PrimaryKey("PK_University", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -56,7 +56,7 @@ namespace basic_api.Migrations
                 columns: table => new
                 {
                     NIK = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     OTP = table.Column<int>(type: "int", nullable: false),
                     ExpiredToken = table.Column<DateTime>(type: "datetime2", nullable: false),
                     isUsed = table.Column<bool>(type: "bit", nullable: false)
@@ -76,20 +76,20 @@ namespace basic_api.Migrations
                 name: "Education",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Degree = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    GPA = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Degree = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    GPA = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UniversityId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Education", x => x.Id);
+                    table.PrimaryKey("PK_Education", x => x.ID);
                     table.ForeignKey(
                         name: "FK_Education_University_UniversityId",
                         column: x => x.UniversityId,
                         principalTable: "University",
-                        principalColumn: "Id",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -97,25 +97,25 @@ namespace basic_api.Migrations
                 name: "AccountRole",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    AccountId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    RoleId = table.Column<int>(type: "int", nullable: false)
+                    NIK = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    RoleID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AccountRole", x => x.Id);
+                    table.PrimaryKey("PK_AccountRole", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_AccountRole_Account_AccountId",
-                        column: x => x.AccountId,
+                        name: "FK_AccountRole_Account_NIK",
+                        column: x => x.NIK,
                         principalTable: "Account",
                         principalColumn: "NIK",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_AccountRole_Role_RoleId",
-                        column: x => x.RoleId,
+                        name: "FK_AccountRole_Role_RoleID",
+                        column: x => x.RoleID,
                         principalTable: "Role",
-                        principalColumn: "Id",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -139,19 +139,19 @@ namespace basic_api.Migrations
                         name: "FK_Profiling_Education_EducationId",
                         column: x => x.EducationId,
                         principalTable: "Education",
-                        principalColumn: "Id",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_AccountRole_AccountId",
+                name: "IX_AccountRole_NIK",
                 table: "AccountRole",
-                column: "AccountId");
+                column: "NIK");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AccountRole_RoleId",
+                name: "IX_AccountRole_RoleID",
                 table: "AccountRole",
-                column: "RoleId");
+                column: "RoleID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Education_UniversityId",

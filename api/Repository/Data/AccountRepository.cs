@@ -38,9 +38,9 @@ namespace api.Repository.Data
             join profiling in context.Profilings
                on account.NIK equals profiling.NIK
             join education in context.Educations
-               on profiling.EducationId equals education.Id
+               on profiling.EducationId equals education.ID
             join university in context.Universities
-               on education.UniversityId equals university.Id
+               on education.UniversityId equals university.ID
             select new
             {
                NIK = employee.NIK,
@@ -56,8 +56,9 @@ namespace api.Repository.Data
                UniversityName = university.Name,
                Roles = (from account in context.AccountRoles
                         join role in context.Roles
-                        on account.RoleId equals role.Id
-                        where account.AccountId == employee.NIK
+                        on account.RoleID equals role.ID
+                        // where account.NIK == employee.NIK
+                        where account.NIK == employee.NIK
                         select new
                         {
                            role.Name
@@ -84,9 +85,9 @@ namespace api.Repository.Data
             join profiling in context.Profilings
                on account.NIK equals profiling.NIK
             join education in context.Educations
-               on profiling.EducationId equals education.Id
+               on profiling.EducationId equals education.ID
             join university in context.Universities
-               on education.UniversityId equals university.Id
+               on education.UniversityId equals university.ID
             where employee.NIK == nik
             select new
             {
@@ -101,11 +102,11 @@ namespace api.Repository.Data
                education.GPA,
                education.Degree,
                UniversityName = university.Name,
-               UniversityId = university.Id,
+               UniversityId = university.ID,
                Roles = (from account in context.AccountRoles
                         join role in context.Roles
-                        on account.RoleId equals role.Id
-                        where account.AccountId == employee.NIK
+                        on account.RoleID equals role.ID
+                        where account.NIK == employee.NIK
                         select new
                         {
                            role.Name
@@ -164,8 +165,8 @@ namespace api.Repository.Data
 
          var accountRole = new AccountRole
          {
-            AccountId = emp.NIK,
-            RoleId = getRoleEmployee.Id
+            NIK = emp.NIK,
+            RoleID = getRoleEmployee.ID
          };
 
          // add to model
@@ -180,7 +181,7 @@ namespace api.Repository.Data
          var profiling = new Profiling
          {
             NIK = emp.NIK,
-            EducationId = education.Id
+            EducationId = education.ID
          };
          context.Profilings.Add(profiling);
          context.SaveChanges();
@@ -223,9 +224,9 @@ namespace api.Repository.Data
             join account in context.Accounts
                on employee.NIK equals account.NIK
             join accountRole in context.AccountRoles
-               on account.NIK equals accountRole.AccountId
+               on account.NIK equals accountRole.NIK
             join role in context.Roles
-               on accountRole.RoleId equals role.Id
+               on accountRole.RoleID equals role.ID
             where employee.Email == email
             select new
             {
@@ -271,6 +272,8 @@ namespace api.Repository.Data
             employee.BirthDate = updateVM.BirthDate;
             employee.Salary = updateVM.Salary;
             employee.Email = updateVM.Email;
+            employee.Gender = updateVM.Gender;
+
 
             context.SaveChanges();
          }
@@ -317,7 +320,7 @@ namespace api.Repository.Data
             return result;
          };
 
-         var accountRole = context.AccountRoles.FirstOrDefault(acc => acc.AccountId == nik);
+         var accountRole = context.AccountRoles.FirstOrDefault(acc => acc.NIK == nik);
          context.AccountRoles.Remove(accountRole);
          context.SaveChanges();
 

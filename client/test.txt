@@ -1,0 +1,29 @@
+public async Task<List<EmployeeVM>> GetAllProfile()
+      {
+         /// isi codingan kalian disini
+         List<EmployeeVM> entities = new List<EmployeeVM>();
+
+         using (var response = await httpClient.GetAsync(address.link + request + "master/"))
+         {
+            string apiResponse = await response.Content.ReadAsStringAsync();
+            entities = JsonConvert.DeserializeObject<List<EmployeeVM>>(apiResponse);
+         }
+
+         return entities;
+      }
+
+      public HttpStatusCode Register(RegisterVM entity)
+      {
+         string requestAcc = "accounts/";
+         StringContent content = new StringContent(JsonConvert.SerializeObject(entity), Encoding.UTF8, "application/json");
+         var result = httpClient.PostAsync(address.link + requestAcc + "register/", content).Result;
+         return result.StatusCode;
+      }
+
+      public HttpStatusCode Update(Employee entity)
+      {
+         StringContent content = new StringContent(JsonConvert.SerializeObject(entity), Encoding.UTF8, "application/json");
+         var result = httpClient.PutAsync(address.link + request, content).Result;
+         return result.StatusCode;
+      }
+   }

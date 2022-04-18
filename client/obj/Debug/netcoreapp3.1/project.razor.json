@@ -14412,6 +14412,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Ramadhani\\Metrodata\\MCC\\Segment 3\\Development\\BASIC\\client\\Views\\Shared\\Unauthorized.cshtml",
+      "TargetPath": "Views\\Shared\\Unauthorized.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Ramadhani\\Metrodata\\MCC\\Segment 3\\Development\\BASIC\\client\\Views\\University\\Index.cshtml",
       "TargetPath": "Views\\University\\Index.cshtml",
       "FileKind": "mvc"
@@ -14424,6 +14429,11 @@
     {
       "FilePath": "c:\\Ramadhani\\Metrodata\\MCC\\Segment 3\\Development\\BASIC\\client\\Views\\Shared\\Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Ramadhani\\Metrodata\\MCC\\Segment 3\\Development\\BASIC\\client\\Views\\Shared\\Forbidden.cshtml",
+      "TargetPath": "Views\\Shared\\Forbidden.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -14454,6 +14464,11 @@
     {
       "FilePath": "c:\\Ramadhani\\Metrodata\\MCC\\Segment 3\\Development\\BASIC\\client\\Views\\Dashboard\\Index.cshtml",
       "TargetPath": "Views\\Dashboard\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Ramadhani\\Metrodata\\MCC\\Segment 3\\Development\\BASIC\\client\\Views\\Shared\\NotFound.cshtml",
+      "TargetPath": "Views\\Shared\\NotFound.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -14494,6 +14509,11 @@
     {
       "FilePath": "c:\\Ramadhani\\Metrodata\\MCC\\Segment 3\\Development\\BASIC\\client\\Views\\Shared\\_EmployeeLayout.cshtml",
       "TargetPath": "Views\\Shared\\_EmployeeLayout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Ramadhani\\Metrodata\\MCC\\Segment 3\\Development\\BASIC\\client\\Views\\Account\\Index.cshtml",
+      "TargetPath": "Views\\Account\\Index.cshtml",
       "FileKind": "mvc"
     },
     {

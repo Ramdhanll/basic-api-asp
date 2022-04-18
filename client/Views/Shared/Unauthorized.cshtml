@@ -1,0 +1,27 @@
+@{
+   Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+   <title>Unauthorized</title>
+</head>
+
+<body style="width: 100vw; height: 100vh;">
+   <main class="d-flex align-items-center justify-content-center bg-warning h-100 w-100 flex-column">
+      <h1 class="text-center">Unauthorized, Please login first!</h1>
+      <a type="button" asp-controller="Login" asp-action="Index" class="btn btn-success">Login</a>
+
+   </main>
+
+   <script src="~/lib/jquery/dist/jquery.min.js"></script>
+   <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

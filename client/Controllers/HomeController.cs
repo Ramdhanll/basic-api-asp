@@ -9,29 +9,47 @@ using client.Models;
 
 namespace client.Controllers
 {
-    public class HomeController : Controller
-    {
-        private readonly ILogger<HomeController> _logger;
+   public class HomeController : Controller
+   {
+      private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
+      public HomeController(ILogger<HomeController> logger)
+      {
+         _logger = logger;
+      }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+      public IActionResult Index()
+      {
+         return View();
+      }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+      public IActionResult Privacy()
+      {
+         return View();
+      }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
-    }
+      [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+      public IActionResult Error()
+      {
+         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+      }
+
+      [HttpGet("Unauthorized/")]
+      public IActionResult Unauthorized()
+      {
+         return View("unauthorized");
+      }
+
+      [HttpGet("Forbidden/")]
+      public IActionResult Forbidden()
+      {
+         return View("forbidden");
+      }
+
+      [HttpGet("Notfound/")]
+      public IActionResult Notfound()
+      {
+         return View("notfound");
+      }
+   }
 }

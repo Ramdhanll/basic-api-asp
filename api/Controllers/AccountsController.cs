@@ -31,7 +31,7 @@ namespace api.Controllers
       }
 
       [HttpGet("master")]
-      // [Authorize(Roles = "Director, Manager")]
+      [Authorize(Roles = "Director, Manager, Employee")]
       public ActionResult GetMasterEmployeeData()
       {
          try
@@ -80,15 +80,15 @@ namespace api.Controllers
             switch (result.Status)
             {
                case 1:
-                  return BadRequest(ResponseAPI.Response(400, "Email tidak dapat ditemukan!"));
+                  return BadRequest(ResponseAPI.ResponseToken(400, "Email tidak dapat ditemukan!"));
                case 2:
-                  return BadRequest(ResponseAPI.Response(400, "Password salah!"));
+                  return BadRequest(ResponseAPI.ResponseToken(400, "Password salah!"));
                case 200:
                   var roles = accountRepository.GetRolesByEmail(loginVM.Email);
                   var token = GenerateToken(loginVM.Email, roles);
-                  return Ok(ResponseAPI.Response(200, "Berhasil login!", new { token }));
+                  return Ok(ResponseAPI.ResponseToken(200, "Berhasil login!", token));
                default:
-                  return BadRequest(ResponseAPI.Response(400, "Login gagal!"));
+                  return BadRequest(ResponseAPI.ResponseToken(400, "Login gagal!"));
             }
          }
          catch (Exception e)
@@ -120,6 +120,7 @@ namespace api.Controllers
          return new JwtSecurityTokenHandler().WriteToken(token);
       }
 
+      [Authorize(Roles = "Director, Manager")]
       [HttpPost("register")]
       public ActionResult Register(RegisterVM registerVM)
       {
@@ -141,6 +142,7 @@ namespace api.Controllers
          }
       }
 
+      [Authorize(Roles = "Director, Manager")]
       [HttpPut("master/update")]
       public ActionResult UpdateAccount(UpdateVM updataVM)
       {
@@ -162,6 +164,7 @@ namespace api.Controllers
          }
       }
 
+      [Authorize(Roles = "Director, Manager")]
       [HttpDelete("remove/{nik}")]
       public ActionResult DeleteAccount(string nik)
       {

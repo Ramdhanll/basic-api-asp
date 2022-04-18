@@ -30,7 +30,16 @@ namespace api.Utils
       internal static object Response<Entity>(int v1, string v2, Entity result) where Entity : class
       {
          return new { Status = v1, Result = result, Message = v2, };
+      }
 
+      internal static object ResponseToken<Entity>(int v1, string v2, Entity result) where Entity : class
+      {
+         return new { Status = v1, Token = result, Message = v2, };
+      }
+
+      internal static object ResponseToken(int v1, string v2)
+      {
+         return new { Status = v1, Token = "", Message = v2, };
       }
    }
 }

@@ -10,8 +10,8 @@ using api.Context;
 namespace basic_api.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20220329042851_create-database")]
-    partial class createdatabase
+    [Migration("20220414091139_create-db")]
+    partial class createdb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -33,6 +33,7 @@ namespace basic_api.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Password")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("isUsed")
@@ -45,43 +46,46 @@ namespace basic_api.Migrations
 
             modelBuilder.Entity("api.Models.AccountRole", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AccountId")
+                    b.Property<string>("NIK")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("RoleId")
+                    b.Property<int>("RoleID")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("ID");
 
-                    b.HasIndex("AccountId");
+                    b.HasIndex("NIK");
 
-                    b.HasIndex("RoleId");
+                    b.HasIndex("RoleID");
 
                     b.ToTable("AccountRole");
                 });
 
             modelBuilder.Entity("api.Models.Education", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Degree")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("GPA")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UniversityId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("ID");
 
                     b.HasIndex("UniversityId");
 
@@ -97,6 +101,7 @@ namespace basic_api.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
@@ -111,6 +116,7 @@ namespace basic_api.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Salary")
@@ -138,7 +144,7 @@ namespace basic_api.Migrations
 
             modelBuilder.Entity("api.Models.Role", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -146,14 +152,14 @@ namespace basic_api.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("ID");
 
                     b.ToTable("Role");
                 });
 
             modelBuilder.Entity("api.Models.University", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -162,7 +168,7 @@ namespace basic_api.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("ID");
 
                     b.ToTable("University");
                 });
@@ -182,11 +188,13 @@ namespace basic_api.Migrations
                 {
                     b.HasOne("api.Models.Account", "Account")
                         .WithMany("AccountRoles")
-                        .HasForeignKey("AccountId");
+                        .HasForeignKey("NIK")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("api.Models.Role", "Role")
                         .WithMany("AccountRoles")
-                        .HasForeignKey("RoleId")
+                        .HasForeignKey("RoleID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

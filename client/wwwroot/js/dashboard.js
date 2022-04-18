@@ -1,4 +1,6 @@
 $(document).ready(function () {
+   const token = $('#token').val()
+
    const universities = (function () {
       var data = null
 
@@ -6,6 +8,9 @@ $(document).ready(function () {
          async: false,
          type: 'GET',
          url: 'https://localhost:5001/api/universities',
+         headers: {
+            Authorization: `Bearer ${token}`,
+         },
          data: {},
          success: function (response) {
             data = response.result
@@ -17,7 +22,11 @@ $(document).ready(function () {
    // GET EMPLOYEES
    $.ajax({
       type: 'GET',
-      url: 'https://localhost:5001/api/accounts/master',
+      url: '../account/getmaster/',
+      // url: 'https://localhost:5001/api/accounts/master',
+      // headers: {
+      //    Authorization: `Bearer ${token}`,
+      // },
       data: {},
    })
       .done((result) => {
@@ -42,6 +51,40 @@ $(document).ready(function () {
          chart: {
             width: 380,
             type: 'pie',
+            toolbar: {
+               show: true,
+               offsetX: 70,
+               offsetY: 0,
+               tools: {
+                  download: true,
+                  selection: true,
+                  zoom: true,
+                  zoomin: true,
+                  zoomout: true,
+                  pan: true,
+                  reset:
+                     true | '<img src="/static/icons/reset.png" width="20">',
+                  customIcons: [],
+               },
+               export: {
+                  csv: {
+                     filename: undefined,
+                     columnDelimiter: ',',
+                     headerCategory: 'category',
+                     headerValue: 'value',
+                     dateFormatter(timestamp) {
+                        return new Date(timestamp).toDateString()
+                     },
+                  },
+                  svg: {
+                     filename: undefined,
+                  },
+                  png: {
+                     filename: undefined,
+                  },
+               },
+               autoSelected: 'zoom',
+            },
          },
          labels: ['Male', 'Female'],
          responsive: [

@@ -43,7 +43,5 @@ namespace api.Controllers
             return StatusCode(500, ResponseAPI.Response(500, e.Message));
          }
       }
-
-
    }
 }

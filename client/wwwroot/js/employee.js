@@ -1,4 +1,6 @@
-﻿$(document).ready(function () {
+﻿const token = $('#token').val()
+
+$(document).ready(function () {
    $('.table-employee').DataTable({
       filter: true,
       orderMulti: false,
@@ -31,7 +33,11 @@
          },
       ],
       ajax: {
-         url: 'https://localhost:5001/api/accounts/master/',
+         url: '../account/getmaster/',
+         // url: 'https://localhost:5001/api/accounts/master',
+         // headers: {
+         //    Authorization: `Bearer ${token}`,
+         // },
          datatype: 'json',
          dataSrc: 'result',
       },
@@ -79,12 +85,18 @@
          },
          {
             data: null,
+            render: (data) => {
+               return data['roles'].join('')
+            },
+         },
+         {
+            data: null,
             orderable: false,
             render: (data, type, row, meta) => {
                return `
                <div class="btn-action d-flex justify-content-around align-items-center">
-                  <button class="btn btn-outline-warning" onClick="openUpdateModal('${data['nik']}')"><i class="fa-solid fa-pen-to-square"></i></button>
-                  <button class="btn btn-outline-danger" onClick="Delete('${data['nik']}')"><i class="fa-solid fa-trash"></i></button>
+                  <button class="btn btn-outline-warning" onClick="openUpdateModal('${data['nik']}')" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa-solid fa-pen-to-square"></i></button>
+                  <button class="btn btn-outline-danger" onClick="Delete('${data['nik']}')"><i class="fa-solid fa-trash" data-toggle="tooltip" data-placement="top" title="Delete"></i></button>
                </div>
                `
             },
@@ -132,7 +144,8 @@ const Insert = () => {
    data.UniversityId = parseInt($('#university_id').val())
 
    $.ajax({
-      url: 'https://localhost:5001/api/accounts/register',
+      // url: 'https://localhost:5001/api/accounts/register',
+      url: '../account/register',
       type: 'POST',
       headers: {
          Accept: 'application/json',
@@ -142,6 +155,12 @@ const Insert = () => {
       data: JSON.stringify(data),
    })
       .done((result) => {
+         console.log(result)
+
+         if (result.status === 400) {
+            return swal('error!', result.message, 'error')
+         }
+
          $('.table-employee').DataTable().ajax.reload()
          $('#employee_form').trigger('reset')
          $('#registerModal').modal('toggle')
@@ -149,9 +168,9 @@ const Insert = () => {
          //buat alert pemberitahuan jika success
       })
       .fail((error) => {
+         console.error(error)
          console.log('error', error.responseJSON.message)
          swal('error!', error.responseJSON.message, 'error')
-         //alert pemberitahuan jika gagal
       })
 }
 
@@ -174,7 +193,7 @@ $(document).ready(function () {
 // get universities and display to modal insert
 $.ajax({
    type: 'GET',
-   url: 'https://localhost:5001/api/universities',
+   url: '../university/getall',
    data: {},
 })
    .done((result) => {
@@ -202,7 +221,7 @@ const Delete = (nik) => {
    }).then((willDelete) => {
       if (willDelete) {
          $.ajax({
-            url: `https://localhost:5001/api/accounts/remove/${nik}`,
+            url: `employee/delete/${nik}`,
             type: 'DELETE',
             headers: {
                Accept: 'application/json',
@@ -258,18 +277,6 @@ const openUpdateModal = (nik) => {
 
 const Update = () => {
    event.preventDefault()
-   //  "NIK": "2022001",
-   //     "FirstName": "Rama",
-   //     "LastName": "Dhani",
-   //     "phone": "0882277344",
-   //     "BirthDate": "2000-03-23",
-   //     "Gender": 0,
-   //     "Salary": 1800000,
-   //     "Email": "ramadhani@gmail.com",
-   //     "education_id": 6,
-   //     "Degree": "S1",
-   //     "GPA": "3.5",
-   //     "UniversityId": 3
 
    const data = {}
    data.nik = $('#nik').val()
@@ -291,6 +298,7 @@ const Update = () => {
       headers: {
          Accept: 'application/json',
          'Content-Type': 'application/json',
+         Authorization: `Bearer ${token}`,
       },
       dataType: 'json',
       data: JSON.stringify(data),
@@ -320,32 +328,3 @@ function formatDate(date) {
 
    return [year, month, day].join('-')
 }
-
-// ;(function () {
-//    'use strict'
-//    window.addEventListener(
-//       'load',
-//       function () {
-//          // Fetch all the forms we want to apply custom Bootstrap validation styles to
-//          var forms = document.getElementsByClassName('needs-validation')
-//          // Loop over them and prevent submission
-//          var validation = Array.prototype.filter.call(forms, function (form) {
-//             form.addEventListener(
-//                'submit',
-//                function (event) {
-//                   if (form.checkValidity() === false) {
-//                      event.preventDefault()
-//                      event.stopPropagation()
-//                   }
-//                   form.classList.add('was-validated')
-//                },
-//                false
-//             )
-//          })
-
-//          console.log('validation', validation)
-//          console.log('forms', forms)
-//       },
-//       false
-//    )
-// })()

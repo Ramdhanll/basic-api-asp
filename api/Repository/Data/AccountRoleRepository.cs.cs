@@ -34,9 +34,9 @@ namespace api.Repository.Data
             join account in context.Accounts
                on employee.NIK equals account.NIK
             join accountRole in context.AccountRoles
-               on account.NIK equals accountRole.AccountId
+               on account.NIK equals accountRole.NIK
             join role in context.Roles
-               on accountRole.RoleId equals role.Id
+               on accountRole.RoleID equals role.ID
             where employee.Email == email
             select new
             {
@@ -63,8 +63,8 @@ namespace api.Repository.Data
 
          var createAccountRole = new AccountRole
          {
-            AccountId = data[0].NIK,
-            RoleId = roleManager.Id
+            NIK = data[0].NIK,
+            RoleID = roleManager.ID
          };
 
          context.AccountRoles.Add(createAccountRole);

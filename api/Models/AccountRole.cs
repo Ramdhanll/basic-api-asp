@@ -11,13 +11,15 @@ namespace api.Models
    [Table("AccountRole")]
    public class AccountRole
    {
-      [Key]
-      public int Id { get; set; }
-      public string AccountId { get; set; }
-      public int RoleId { get; set; }
-
+      [Key, Required]
+      public int ID { get; set; }
+      [Required]
+      public string NIK { get; set; }
+      [Required]
+      public int RoleID { get; set; }
       [JsonIgnore]
       public virtual Account Account { get; set; }
+      [JsonIgnore]
       public virtual Role Role { get; set; }
    }
 }

@@ -11,8 +11,8 @@ namespace api.Models
    [Table("University")]
    public class University
    {
-      [Key]
-      public int Id { get; set; }
+      [Key, Required]
+      public int ID { get; set; }
       [Required]
       public string Name { get; set; }
       [JsonIgnore]

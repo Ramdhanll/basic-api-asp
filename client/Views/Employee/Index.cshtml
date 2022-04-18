@@ -1,6 +1,8 @@
 ﻿@{
    ViewData["Title"] = "Employee Page";
    Layout = "_AdminLayout";
+
+   var token = ViewBag.Token;
 }
 
 <div class="container pt-3 overflow-auto">
@@ -19,6 +21,7 @@
             <th>Birth Date</th>
             <th>University</th>
             <th>Salary</th>
+            <th>Roles</th>
             <th>Action</th>
          </tr>
       </thead>
@@ -135,6 +138,9 @@
          </div>
       </div>
    </div>
+
+   <input type="hidden" id="token" value="@token">
+
 
    <!-- Modal Update-->
    <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">

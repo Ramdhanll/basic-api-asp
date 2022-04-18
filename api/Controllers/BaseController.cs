@@ -3,6 +3,7 @@ using System.Linq;
 using api.Models;
 using api.Utils;
 using basic_api.Repository.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controllers
@@ -65,6 +66,7 @@ namespace api.Controllers
          }
       }
 
+      [Authorize(Roles = "Director, Manager")]
       [HttpDelete("{key}")]
       public ActionResult Delete(Key key)
       {

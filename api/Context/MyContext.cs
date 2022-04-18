@@ -20,49 +20,35 @@ namespace api.Context
 
       protected override void OnModelCreating(ModelBuilder modelBuilder)
       {
-         // Employe-Account (one to one)
          modelBuilder.Entity<Employee>()
-            .HasOne(a => a.Account)
-            .WithOne(b => b.Employee)
-            .HasForeignKey<Account>(b => b.NIK)
-            .OnDelete(DeleteBehavior.ClientCascade);
+             .HasOne(a => a.Account)
+             .WithOne(b => b.Employee)
+             .HasForeignKey<Account>(b => b.NIK);
 
-         // Account-Profiling (one to one)
          modelBuilder.Entity<Account>()
-            .HasOne(a => a.Profiling)
-            .WithOne(b => b.Account)
-            .HasForeignKey<Profiling>(b => b.NIK)
-            .OnDelete(DeleteBehavior.ClientCascade);
+             .HasOne(a => a.Profiling)
+             .WithOne(b => b.Account)
+             .HasForeignKey<Profiling>(b => b.NIK);
 
+         modelBuilder.Entity<Profiling>()
+             .HasOne(a => a.Education)
+             .WithMany(b => b.Profilings)
+             .HasForeignKey(b => b.EducationId);
 
-         // Education-profiling (one to many)
-         modelBuilder.Entity<Education>()
-            .HasMany(a => a.Profilings)
-            .WithOne(e => e.Education)
-            .HasForeignKey(v => v.EducationId)
-            .OnDelete(DeleteBehavior.ClientCascade);
-
-
-         // University-Education (one to many)
          modelBuilder.Entity<University>()
-            .HasMany(c => c.Educations)
-            .WithOne(e => e.University)
-            .HasForeignKey(b => b.UniversityId)
-            .OnDelete(DeleteBehavior.ClientCascade);
-
+             .HasMany(a => a.Educations)
+             .WithOne(b => b.University)
+             .HasForeignKey(b => b.UniversityId);
 
          modelBuilder.Entity<AccountRole>()
-            .HasOne(ar => ar.Account)
-            .WithMany(a => a.AccountRoles)
-            .HasForeignKey(ar => ar.AccountId)
-            .OnDelete(DeleteBehavior.ClientCascade);
+             .HasOne(ab => ab.Account)
+             .WithMany(a => a.AccountRoles)
+             .HasForeignKey(ab => ab.NIK);
 
          modelBuilder.Entity<AccountRole>()
-            .HasOne(ar => ar.Role)
-            .WithMany(r => r.AccountRoles)
-            .HasForeignKey(ar => ar.RoleId)
-            .OnDelete(DeleteBehavior.ClientCascade);
-
+             .HasOne(ab => ab.Role)
+             .WithMany(b => b.AccountRoles)
+             .HasForeignKey(ab => ab.RoleID);
       }
    }
 }
